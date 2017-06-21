@@ -2,6 +2,19 @@
 Self-Driving Car Engineer Nanodegree Program
 
 ---
+Recored video of PID with Twiddle
+https://www.youtube.com/watch?v=yObHco9eRHo
+
+Reflections:
+1) Built a PID with Twiddle controller adjusting both steering & throttle values;
+2) The initial parameter values are important to PID/Twiddle system. Looks like PID/Twiddle (or my design) can't find the REAL best paramters nor able to dynamically ajust itself when the car suddenly lose control;
+3) Need to keep some startup steps while Twiddle shall do nothing, or the car will stall on the starting place or run with a very low speed;
+4) when the car suddenly lose control (already archived optimum paramters once),  I tried to reset dp[0-2] and re-trigger the Twiddle. But found it won't help much, since based on the algorithm of Twiddle, 
+    it will always fall back to the same optimum parameter values after some adjustments. This might make the car more unstable.
+    
+5) When remove Kd paramter (set Kd to zero), the car will shake more and more dramatically , eventually fall out of the track.
+6) When remove Ki paramter (set Ki to zero), the car can still complete the track with lower increasing speed.
+
 
 ## Dependencies
 

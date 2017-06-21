@@ -1,8 +1,12 @@
 #ifndef PID_H
 #define PID_H
 
+#include <vector>
+#include <string>
+
 class PID {
 public:
+  std::string name;
   /*
   * Errors
   */
@@ -17,10 +21,25 @@ public:
   double Ki;
   double Kd;
 
+  unsigned long long steps;
+  unsigned long long startup_steps;
+  double error;
+  double best_error;
+
+  std::vector<double> p;
+  std::vector<double> dp;
+  unsigned current_index;
+
+  enum {
+	  TWIDDLE_START = 0,
+	  TWIDDLE_UP = 1,
+	  TWIDDLE_DOWN = 2
+  } current_state;
+
   /*
   * Constructor
   */
-  PID();
+  PID(std::string);
 
   /*
   * Destructor.
@@ -41,6 +60,10 @@ public:
   * Calculate the total PID error.
   */
   double TotalError();
+
+  bool UpdateTwiddle();
+
+  void Recaliberate();
 };
 
 #endif /* PID_H */
