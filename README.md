@@ -12,7 +12,7 @@ Reflections:
 4) when the car suddenly lose control (already archived optimum paramters once),  I tried to reset dp[0-2] and re-trigger the Twiddle. But found it won't help much, since based on the algorithm of Twiddle, 
     it will always fall back to the same optimum parameter values after some adjustments. This might make the car more unstable.
     
-5) When remove Kd paramter (set Kd to zero), the car will shake more and more dramatically , eventually fall out of the track.
+5) When remove Kd paramter (set Kd to zero), the car will shake more and more drastically , eventually fall out of the track.
 6) When remove Ki paramter (set Ki to zero), the car can still complete the track with lower increasing speed.
 
 
